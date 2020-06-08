@@ -39,7 +39,7 @@ ENV TERM=xterm
 # Update the image to the latest packages
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y libudev-dev libusb-0.1-4 libcurl4 libcurl4-gnutls-dev libpython3.8-dev tzdata apt-utils software-properties-common sudo net-tools iproute2 mc htop curl wget bash iputils-ping zip unzip
-RUN mkdir /config
+RUN mkdir /opt/domoticz
 
 # COPY domoticz/ /opt/domoticz/
 RUN wget -qO- http://releases.domoticz.com/releases/release/domoticz_linux_x86_64.tgz | tar xz -C /opt/domoticz
