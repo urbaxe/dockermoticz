@@ -12,6 +12,7 @@ or fixdata/dockermoticz:latest for the nightly build beta
 The architectures supported by this image are:
 
 | Architecture | Tag|
+| ------------ | ---|
 | x86-64       | stable|
 | x86-64       | latest|
 
