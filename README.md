@@ -168,5 +168,6 @@ docker run --rm --privileged multiarch/qemu-user-static:register --reset
 Once registered you can define the dockerfile to use with -f Dockerfile.aarch64.
 
 |Versions| Comment|
+|--------| -------|
 |06.09.20| Update README.|
 |06.08.20| Initial Release.|
