@@ -153,21 +153,8 @@ Note: We do not endorse the use of Watchtower as a solution to automated updates
 
 You can also remove the old dangling images: docker image prune
 
-# Building locally
-If you want to make local modifications to these images for development purposes or just to customize the logic:
-
-git clone https://github.com/linuxserver/docker-domoticz.git
-cd docker-domoticz
-docker build \
-  --no-cache \
-  --pull \
-  -t linuxserver/domoticz:latest .
-The ARM variants can be built on x86_64 hardware using multiarch/qemu-user-static
-
-docker run --rm --privileged multiarch/qemu-user-static:register --reset
-Once registered you can define the dockerfile to use with -f Dockerfile.aarch64.
-
-|Versions| Comment|
-|--------| -------|
+# Versions
+|Versions|Comment|
+|--------|-------|
 |06.09.20| Update README.|
 |06.08.20| Initial Release.|
