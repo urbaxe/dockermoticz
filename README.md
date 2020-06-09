@@ -56,7 +56,7 @@ As you can see above, the device node created is ttyUSB0. It does not say where,
 
 ## docker-compose
 Compatible with docker-compose v2 schemas.
-
+```
 ---
 version: "2"
 services:
@@ -80,7 +80,7 @@ services:
     devices:
       - path to device:path to device
     restart: unless-stopped
-
+```
 # Parameters
 Container images are configured using parameters passed at runtime (such as those above). These parameters are separated by a colon and indicate external:internal respectively. For example, -p 8080:80 would expose port 80 from inside the container to be accessible from the host's IP on port 8080 outside the container.
 
