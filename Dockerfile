@@ -1,7 +1,5 @@
 FROM ubuntu:20.04
 
-TAG fixdata/dockermoticz:stable
-
 ARG APP_HASH
 ARG BUILD_DATE
 
