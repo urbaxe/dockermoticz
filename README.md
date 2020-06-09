@@ -1,8 +1,6 @@
 # Fixdata
 Domoticz is a Home Automation System that lets you monitor and configure various devices like: Lights, Switches, various sensors/meters like Temperature, Rain, Wind, UV, Electra, Gas, Water and much more. Notifications/Alerts can be sent to any mobile device.
 
-domoticz
-
 # Supported Architectures
 The images support architecture x86-64.
 
@@ -17,7 +15,7 @@ The architectures supported by this image are:
 | x86-64       | latest|
 
 |OS|ARCH|
-|--|--|
+|---|---|
 |linux|amd64|
 
 | Tag           | Description |
