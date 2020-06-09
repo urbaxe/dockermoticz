@@ -21,7 +21,7 @@ The architectures supported by this image are:
 | Tag           | Description |
 | ------------- | ----------- |
 | latest        | Current latest head from development at https://github.com/domoticz/domoticz.|
-| stable        | Latest stable version.|
+| stable        | Latest stable version at http://releases.domoticz.com/releases/release/domoticz_linux_x86_64.tgz.|
 
 # Usage
 Here are some example to help you get started creating a container.
