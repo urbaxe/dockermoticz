@@ -65,10 +65,10 @@ services:
       - TZ=Europe/Stockholm
       - WEBROOT=domoticz #optional
     volumes:
-      - path to data:/config
+      - path to data:/config \
       - path to db:/opt/domoticz/db \
-      - path to scripts:/opt/domoticz/scripts
-      - path to backups:/opt/domoticz/backups
+      - path to scripts:/opt/domoticz/scripts \
+      - path to backups:/opt/domoticz/backups \
       - path to plugins:/opt/domoticz/plugins  
     ports:
       - 8008:80
