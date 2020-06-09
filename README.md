@@ -4,14 +4,16 @@ Domoticz is a Home Automation System that lets you monitor and configure various
 domoticz
 
 # Supported Architectures
-Our images support multiple architectures such as x86-64, arm64 and armhf. We utilise the docker manifest for multi-platform awareness. More information is available from docker here and our announcement here.
+The images support architecture x86-64.
 
-Simply pulling linuxserver/domoticz should retrieve the correct image for your arch, but you can also pull specific arch images via tags.
+Simply pulling fixdata/dockermoticz:stable and you get an ubuntu 20.04 dist with Domoticz latest stable release.
+or fixdata/dockermoticz:latest for the nightly build beta
 
 The architectures supported by this image are:
 
 | Architecture | Tag|
-| x86-64       | amd64-latest|
+| x86-64       | stable|
+| x86-64       | latest|
 
 
 | Tag           | Description |
@@ -33,9 +35,9 @@ docker create \
   -p 6144:6144 \
   -p 1443:443 \
   -v path to db:/opt/domoticz/db \
-  -v path to scripts:/opt/domoticz/scripts
-  -v path to backups:/opt/domoticz/backups
-  -v path to plugins:/opt/domoticz/plugins  
+  -v path to scripts:/opt/domoticz/scripts \
+  -v path to backups:/opt/domoticz/backups \
+  -v path to plugins:/opt/domoticz/plugins \
   --device path to device:path to device \
   --restart unless-stopped \
   fixdata/domoticz
@@ -117,19 +119,7 @@ In this instance PUID=1000 and PGID=1000, to find yours use id user as below:
 # Application Setup
 To configure Domoticz, go to the IP of your docker host on the port you configured (default 8008), and add your hardware in Setup > Hardware. The user manual is available at www.domoticz.com
 
-# Support Info
-Shell access whilst the container is running: docker exec -it domoticz /bin/bash
-To monitor the logs of the container in realtime: docker logs -f domoticz
-container version number
-docker inspect -f '{{ index .Config.Labels "build_version" }}' domoticz
-image version number
-docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/domoticz
-
 # Updating Info
-Most of our images are static, versioned, and require an image update and container recreation to update the app inside. With some exceptions (ie. nextcloud, plex), we do not recommend or support updating apps inside the container. Please consult the Application Setup section above to see if it is recommended for the image.
-
-Below are the instructions for updating containers:
-
 ## Via Docker Run/Create
 Update the image: docker pull linuxserver/domoticz
 Stop the running container: docker stop domoticz
@@ -144,16 +134,6 @@ or update a single image: docker-compose pull domoticz
 Let compose update all containers as necessary: docker-compose up -d
 or update a single container: docker-compose up -d domoticz
 You can also remove the old dangling images: docker image prune
-
-## Via Watchtower auto-updater (especially useful if you don't remember the original parameters)
-- Pull the latest image at its tag and replace it with the same env variables in one run:
-
-docker run --rm \
--v /var/run/docker.sock:/var/run/docker.sock \
-containrrr/watchtower \
---run-once domoticz
-
-Note: We do not endorse the use of Watchtower as a solution to automated updates of existing Docker containers. In fact we generally discourage automated updates. However, this is a useful tool for one-time manual updates of containers where you have forgotten the original parameters. In the long term, we highly recommend using Docker Compose.
 
 You can also remove the old dangling images: docker image prune
 
