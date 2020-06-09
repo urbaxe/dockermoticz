@@ -27,6 +27,7 @@ The architectures supported by this image are:
 Here are some example to help you get started creating a container.
 
 ## docker
+```
 docker create \
   --name=domoticz \
   -e PUID=1000 \
@@ -43,15 +44,15 @@ docker create \
   --device path to device:path to device \
   --restart unless-stopped \
   fixdata/domoticz
-
+```
 ## Passing Through USB Devices
 To get full use of Domoticz, you probably have a USB device you want to pass through. To figure out which device to pass through, you have to connect the device and look in dmesg for the device node created. Issue the command 'dmesg | tail' after you connected your device and you should see something like below.
-
+```
 usb 1-1.2: new full-speed USB device number 7 using ehci-pci
 ftdi_sio 1-1.2:1.0: FTDI USB Serial Device converter detected
 usb 1-1.2: Detected FT232RL
 usb 1-1.2: FTDI USB Serial Device converter now attached to ttyUSB0
-
+```
 As you can see above, the device node created is ttyUSB0. It does not say where, but it's almost always in /dev/. The correct tag for passing through this USB device is '--device /dev/ttyUSB0:/dev/ttyUSB0'
 
 ## docker-compose
@@ -114,10 +115,10 @@ When using volumes (-v flags) permissions issues can arise between the host OS a
 Ensure any volume directories on the host are owned by the same user you specify and any permissions issues will vanish like magic.
 
 In this instance PUID=1000 and PGID=1000, to find yours use id user as below:
-
+```
   $ id username
     uid=1000(dockeruser) gid=1000(dockergroup) groups=1000(dockergroup)
- 
+``` 
 
 # Application Setup
 To configure Domoticz, go to the IP of your docker host on the port you configured (default 8008), and add your hardware in Setup > Hardware. The user manual is available at www.domoticz.com
