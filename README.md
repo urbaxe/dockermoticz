@@ -13,11 +13,12 @@ The architectures supported by this image are:
 Architecture	Tag
 x86-64	amd64-latest
 
-| Tag | Description |
-| latest | Current latest head from development at https://github.com/domoticz/domoticz.|
-| stable | Latest stable version.|
+| Tag           | Description |
+| ------------- | ----------- |
+| latest        | Current latest head from development at https://github.com/domoticz/domoticz.|
+| stable        | Latest stable version.|
 | stable-4.9700 | Old stable version. Will not be updated anymore! |
-| stable-3.815 | Old stable version. Will not be updated anymore! |
+| stable-3.815  | Old stable version. Will not be updated anymore! |
 | stable-3.5877 | Old stable version. Will not be updated anymore! |
 
 # Usage
