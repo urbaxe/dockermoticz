@@ -89,12 +89,11 @@ Container images are configured using parameters passed at runtime (such as thos
 |-e PGID=1000|for GroupID - see below for explanation|
 |-e TZ=Europe/Stckholm|Specify a timezone to use EG Europe/London.|
 |-e WEBROOT=domoticz|Sets webroot to domoticz for usage with subfolder reverse proxy. Not needed unless reverse proxying.|
-|-v /config|Where Domoticz stores config files and data.|
 |-v /opt/domoticz/db|Where Domoticz stores config files and data.|
-|/opt/domoticz/scripts||
-|/opt/domoticz/backups||
-|/opt/domoticz/plugins||
-|--device path to device|For passing through USB devices.|
+|/opt/domoticz/scripts|Where Domoticz stores config script files.|
+|/opt/domoticz/backups|Where Domoticz stores backup files.|
+|/opt/domoticz/plugins|Where Domoticz stores plugin files.|
+|--device <path to device>|For passing through USB devices. One or more|
 
 # Environment variables from files (Docker secrets)
 You can set any environment variable from a file by using a special prepend FILE__.
