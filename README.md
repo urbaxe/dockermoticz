@@ -103,8 +103,9 @@ Container images are configured using parameters passed at runtime (such as thos
 You can set any environment variable from a file by using a special prepend FILE__.
 
 As an example:
-
+```
 -e FILE__PASSWORD=/run/secrets/mysecretpassword
+```
 Will set the environment variable PASSWORD based on the contents of the /run/secrets/mysecretpassword file.
 
 # User / Group Identifiers
