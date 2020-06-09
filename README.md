@@ -65,7 +65,6 @@ services:
       - TZ=Europe/Stockholm
       - WEBROOT=domoticz #optional
     volumes:
-      - path to data:/config \
       - path to db:/opt/domoticz/db \
       - path to scripts:/opt/domoticz/scripts \
       - path to backups:/opt/domoticz/backups \
@@ -81,16 +80,21 @@ services:
 # Parameters
 Container images are configured using parameters passed at runtime (such as those above). These parameters are separated by a colon and indicate external:internal respectively. For example, -p 8080:80 would expose port 80 from inside the container to be accessible from the host's IP on port 8080 outside the container.
 
-Parameter	Function
--p 8080	WebUI
--p 6144	Domoticz communication port.
--p 1443	Domoticz communication port.
--e PUID=1000	for UserID - see below for explanation
--e PGID=1000	for GroupID - see below for explanation
--e TZ=Europe/London	Specify a timezone to use EG Europe/London.
--e WEBROOT=domoticz	Sets webroot to domoticz for usage with subfolder reverse proxy. Not needed unless reverse proxying.
--v /config	Where Domoticz stores config files and data.
---device path to device	For passing through USB devices.
+|Parameter|Function|
+|---|---|
+|-p 8008|WebUI|
+|-p 6144|Domoticz communication port.|
+|-p 1443|Domoticz communication port.|
+|-e PUID=1000|for UserID - see below for explanation|
+|-e PGID=1000|for GroupID - see below for explanation|
+|-e TZ=Europe/Stckholm|Specify a timezone to use EG Europe/London.|
+|-e WEBROOT=domoticz|Sets webroot to domoticz for usage with subfolder reverse proxy. Not needed unless reverse proxying.|
+|-v /config|Where Domoticz stores config files and data.|
+|-v /opt/domoticz/db|Where Domoticz stores config files and data.|
+|/opt/domoticz/scripts||
+|/opt/domoticz/backups||
+|/opt/domoticz/plugins||
+|--device path to device|For passing through USB devices.|
 
 # Environment variables from files (Docker secrets)
 You can set any environment variable from a file by using a special prepend FILE__.
