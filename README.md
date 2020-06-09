@@ -50,7 +50,7 @@ usb 1-1.2: FTDI USB Serial Device converter now attached to ttyUSB0
 
 As you can see above, the device node created is ttyUSB0. It does not say where, but it's almost always in /dev/. The correct tag for passing through this USB device is '--device /dev/ttyUSB0:/dev/ttyUSB0'
 
-##docker-compose
+## docker-compose
 Compatible with docker-compose v2 schemas.
 
 ---
