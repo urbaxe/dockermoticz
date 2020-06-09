@@ -20,7 +20,7 @@ The architectures supported by this image are:
 
 | Tag           | Description |
 | ------------- | ----------- |
-| latest        | Current latest head from development at https://github.com/domoticz/domoticz.|
+| latest        | Current latest head from development at https://releases.domoticz.com/releases/beta/domoticz_linux_x86_64.tgz.|
 | stable        | Latest stable version at http://releases.domoticz.com/releases/release/domoticz_linux_x86_64.tgz.|
 
 # Usage
