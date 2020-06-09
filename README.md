@@ -144,6 +144,7 @@ You can also remove the old dangling images: docker image prune
 
 ## Via Watchtower auto-updater (especially useful if you don't remember the original parameters)
 - Pull the latest image at its tag and replace it with the same env variables in one run:
+
 docker run --rm \
 -v /var/run/docker.sock:/var/run/docker.sock \
 containrrr/watchtower \
