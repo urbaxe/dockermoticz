@@ -1,8 +1,9 @@
+#Fixdata
 Domoticz is a Home Automation System that lets you monitor and configure various devices like: Lights, Switches, various sensors/meters like Temperature, Rain, Wind, UV, Electra, Gas, Water and much more. Notifications/Alerts can be sent to any mobile device.
 
 domoticz
 
-Supported Architectures
+#Supported Architectures
 Our images support multiple architectures such as x86-64, arm64 and armhf. We utilise the docker manifest for multi-platform awareness. More information is available from docker here and our announcement here.
 
 Simply pulling linuxserver/domoticz should retrieve the correct image for your arch, but you can also pull specific arch images via tags.
@@ -11,18 +12,15 @@ The architectures supported by this image are:
 
 Architecture	Tag
 x86-64	amd64-latest
-arm64	arm64v8-latest
-armhf	arm32v7-latest
-Version Tags
-This image provides various versions that are available via tags. latest tag usually provides the latest stable version. Others are considered under development and caution must be exercised when using them.
 
-Tag	Description
-latest	Current latest head from development at https://github.com/domoticz/domoticz.
-stable	Latest stable version.
-stable-4.9700	Old stable version. Will not be updated anymore!
-stable-3.815	Old stable version. Will not be updated anymore!
-stable-3.5877	Old stable version. Will not be updated anymore!
-Usage
+|Tag|Description|
+|latest|Current latest head from development at https://github.com/domoticz/domoticz.|
+|stable|Latest stable version.|
+|stable-4.9700|Old stable version. Will not be updated anymore!|
+|stable-3.815|Old stable version. Will not be updated anymore!|
+|stable-3.5877|Old stable version. Will not be updated anymore!|
+
+#Usage
 Here are some example snippets to help you get started creating a container.
 
 docker
