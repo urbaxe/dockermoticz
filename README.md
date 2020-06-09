@@ -16,6 +16,9 @@ The architectures supported by this image are:
 | x86-64       | stable|
 | x86-64       | latest|
 
+|OS|ARCH|
+|--|--|
+|linux|amd64|
 
 | Tag           | Description |
 | ------------- | ----------- |
