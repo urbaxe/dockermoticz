@@ -11,7 +11,7 @@ LABEL vcs-url="https://github.com/domoticz/domoticz" \
       build-date=2020-06-08 \
       maintainer="urbaxe@fixdata.ws" \
       version="2020.2" \
-      description="This is custom Docker Image for the Domoticz Home Automation Services."  \
+      description="This is custom Docker Image for the Domoticz Home Automation Services."
 
 ENV PUID=1000
 ENV PGID=1000
