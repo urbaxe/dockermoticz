@@ -1,5 +1,8 @@
 FROM ubuntu:20.04
 
+# Disable Prompt During Packages Installation
+ARG DEBIAN_FRONTEND=noninteractive
+
 # Identify the maintainer of an image
 LABEL vcs-url="https://github.com/domoticz/domoticz" \
       url="https://domoticz.com/" \
@@ -9,9 +12,6 @@ LABEL vcs-url="https://github.com/domoticz/domoticz" \
       maintainer="urbaxe@fixdata.ws" \
       version="2020.2" \
       description="This is custom Docker Image for the Domoticz Home Automation Services."  \
-
-# Disable Prompt During Packages Installation
-ARG DEBIAN_FRONTEND=noninteractive
 
 ENV PUID=1000
 ENV PGID=1000
