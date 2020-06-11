@@ -1,8 +1,5 @@
 FROM ubuntu:20.04
 
-ARG APP_HASH
-ARG BUILD_DATE
-
 # Identify the maintainer of an image
 LABEL vcs-url="https://github.com/domoticz/domoticz" \
       url="https://domoticz.com/" \
