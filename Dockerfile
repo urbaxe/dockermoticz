@@ -12,14 +12,6 @@ LABEL vcs-url="https://github.com/domoticz/domoticz" \
       maintainer="urbaxe@fixdata.ws" \
       version="2020.2" \
       description="This is custom Docker Image for the Domoticz Home Automation Services."  \
-      traefik.enable=true \
-      traefik.http.middlewares.redirect-middleware.redirectscheme.scheme=https \
-      traefik.http.routers.domoticz-router.entrypoints=web \
-      traefik.http.routers.domoticz-router.rule=Host(`domoticz.fixdata.ws`) \
-      traefik.http.routers.domoticz-router.middlewares=redirect-middleware \
-      traefik.http.routers.domoticzsecure-router.entrypoints=websecure \
-      traefik.http.routers.domoticzsecure-router.tls=true \
-      traefik.http.routers.domoticzsecure-router.rule=Host(`domoticz.fixdata.ws`)
 
 # Disable Prompt During Packages Installation
 ARG DEBIAN_FRONTEND=noninteractive
