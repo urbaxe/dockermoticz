@@ -11,7 +11,7 @@ The architectures supported by this image are:
 
 | Architecture | Tag|
 | ------------ | ---|
-| x86-64       | stable|
+| x86-64       | beta|
 | x86-64       | latest|
 
 |OS|ARCH|
@@ -20,8 +20,8 @@ The architectures supported by this image are:
 
 | Tag           | Description |
 | ------------- | ----------- |
-| latest        | Current latest head from development at https://releases.domoticz.com/releases/beta/domoticz_linux_x86_64.tgz.|
-| stable        | Latest stable version at http://releases.domoticz.com/releases/release/domoticz_linux_x86_64.tgz.|
+| beta    | Current latest head from development at https://releases.domoticz.com/releases/beta/domoticz_linux_x86_64.tgz.|
+| latest  | Latest stable version at http://releases.domoticz.com/releases/release/domoticz_linux_x86_64.tgz.|
 
 # Usage
 Here are some example to help you get started creating a container.
