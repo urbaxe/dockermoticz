@@ -4,8 +4,8 @@ Domoticz is a Home Automation System that lets you monitor and configure various
 # Supported Architectures
 The images support architecture x86-64.
 
-Simply pulling fixdata/dockermoticz:stable and you get an ubuntu 20.04 dist with Domoticz latest stable release.
-or fixdata/dockermoticz:latest for the nightly build beta
+Simply pulling fixdata/dockermoticz:latest and you get an ubuntu 20.04 dist with Domoticz latest stable release.
+or fixdata/dockermoticz:beta for the nightly build beta
 
 The architectures supported by this image are:
 
@@ -20,8 +20,8 @@ The architectures supported by this image are:
 
 | Tag           | Description |
 | ------------- | ----------- |
-| beta    | Current latest head from development at https://releases.domoticz.com/releases/beta/domoticz_linux_x86_64.tgz.|
-| latest  | Latest stable version at http://releases.domoticz.com/releases/release/domoticz_linux_x86_64.tgz.|
+| beta    | Current latest head from development at https://releases.domoticz.com/releases/beta/domoticz_linux_x86_64.tgz. |
+| latest  | Latest stable version at http://releases.domoticz.com/releases/release/domoticz_linux_x86_64.tgz.              |
 
 # Usage
 Here are some example to help you get started creating a container.
