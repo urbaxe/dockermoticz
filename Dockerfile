@@ -3,15 +3,19 @@ FROM ubuntu:latest
 # Disable Prompt During Packages Installation
 ARG DEBIAN_FRONTEND=noninteractive
 
+ARG BUILD_DATE
+ARG VERSION
+
 # Identify the maintainer of an image
 LABEL vcs-url="https://github.com/domoticz/domoticz" \
       url="https://domoticz.com/" \
       name="Domoticz" \
       license="GPLv3" \
-      build-date=2020-06-08 \
+      build-date=${BUILD_DATE} \
       maintainer="urbaxe@fixdata.ws" \
-      version="2020.2" \
+      version="2020.2 ${VERSION}" \
       description="This is custom Docker Image for the Domoticz Home Automation Services."
+
 
 ENV PUID=1000
 ENV PGID=1000
