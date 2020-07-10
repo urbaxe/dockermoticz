@@ -47,4 +47,4 @@ VOLUME /opt/domoticz/plugins
 EXPOSE 80 443
 
 ENTRYPOINT ["/opt/domoticz/domoticz", "-dbase", "/opt/domoticz/db/domoticz.db", "-log", "/opt/domoticz/db/domoticz.log"]
-CMD ["-www", "$www", "-sslwww", "$sslwww"]
+CMD ["-www", "80", "-sslwww", "443"]
