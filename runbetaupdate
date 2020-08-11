@@ -1,0 +1,3 @@
+#! /bin/bash
+cd /opt/domoticz
+/opt/domoticz/updatebeta
