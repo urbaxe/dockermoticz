@@ -30,9 +30,12 @@ RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y libudev-dev libusb-0.1-4 libcurl4 libcurl4-gnutls-dev libpython3.8-dev tzdata apt-utils software-properties-common sudo net-tools iproute2 mc htop curl wget bash iputils-ping zip unzip
 RUN mkdir /opt/domoticz
 
-# COPY domoticz/ /opt/domoticz/
 RUN wget -qO- https://releases.domoticz.com/releases/beta/domoticz_linux_x86_64.tgz | tar xz -C /opt/domoticz
 WORKDIR /opt/domoticz
+
+#Prepare for daily beta updates
+COPY runbetaupdate /etc/cron.daily
+RUN chmod 755 /etc/cron.daily/runbetaupdate
 
 RUN chmod +x ./domoticz
 
