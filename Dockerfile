@@ -38,6 +38,7 @@ RUN wget -qO- http://releases.domoticz.com/releases/release/domoticz_linux_x86_6
 WORKDIR /opt/domoticz
 
 RUN chmod +x ./domoticz
+RUN sed -i '/update2.html/d' /opt/domoticz/www/html5.appcache
 
 VOLUME /opt/domoticz/db
 VOLUME /opt/domoticz/scripts
