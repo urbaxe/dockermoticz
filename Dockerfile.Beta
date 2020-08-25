@@ -46,6 +46,7 @@ COPY runbetaupdate /etc/cron.daily
 RUN chmod 755 /etc/cron.daily/runbetaupdate
 
 RUN chmod +x ./domoticz
+RUN sed -i '/update2.html/d' /opt/domoticz/www/html5.appcache
 
 VOLUME /opt/domoticz/db
 VOLUME /opt/domoticz/scripts
