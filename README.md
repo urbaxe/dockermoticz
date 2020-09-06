@@ -43,7 +43,7 @@ docker create \
   -v path to plugins:/opt/domoticz/plugins \
   --device path to device:path to device \
   --restart unless-stopped \
-  fixdata/domoticz
+  fixdata/dockermoticz
 ```
 ## Passing Through USB Devices
 To get full use of Domoticz, you probably have a USB device you want to pass through. To figure out which device to pass through, you have to connect the device and look in dmesg for the device node created. Issue the command 'dmesg | tail' after you connected your device and you should see something like below.
@@ -62,7 +62,7 @@ Compatible with docker-compose v2 schemas.
 version: "2"
 services:
   domoticz:
-    image: linuxserver/domoticz
+    image: fixdata/dockermoticz
     container_name: domoticz
     environment:
       - PUID=1000
@@ -70,9 +70,9 @@ services:
       - TZ=Europe/Stockholm
       - WEBROOT=domoticz #optional
     volumes:
-      - path to db:/opt/domoticz/db \
-      - path to scripts:/opt/domoticz/scripts \
-      - path to backups:/opt/domoticz/backups \
+      - path to db:/opt/domoticz/db
+      - path to scripts:/opt/domoticz/scripts
+      - path to backups:/opt/domoticz/backups
       - path to plugins:/opt/domoticz/plugins  
     ports:
       - 8008:80
