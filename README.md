@@ -125,7 +125,7 @@ To configure Domoticz, go to the IP of your docker host on the port you configur
 
 # Updating Info
 ## Via Docker Run/Create
-Update the image: docker pull linuxserver/domoticz
+Update the image: docker pull fixdata/dockermoticz
 Stop the running container: docker stop domoticz
 Delete the container: docker rm domoticz
 Recreate a new container with the same docker create parameters as instructed above (if mapped correctly to a host folder, your /config folder and settings will be preserved)
