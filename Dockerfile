@@ -30,7 +30,7 @@ ENV TERM=xterm
 #
 # Update the image to the latest packages
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y build-essential cmake libudev-dev libusb-0.1-4 libcurl4 libftdi-dev libusb-dev libconfuse-dev libcurl4-gnutls-dev libpython3.8-dev tzdata apt-utils software-properties-common sudo net-tools iproute2 mc htop curl wget bash iputils-ping zip unzip pip3 
+RUN apt-get install -y build-essential cmake libudev-dev libusb-0.1-4 libcurl4 libftdi-dev libusb-dev libconfuse-dev libcurl4-gnutls-dev libpython3.8-dev tzdata apt-utils software-properties-common sudo net-tools iproute2 mc htop curl wget bash iputils-ping zip unzip python3-pip 
 RUN pip3 install samsungctl
 RUN mkdir /opt/domoticz
 
