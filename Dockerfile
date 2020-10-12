@@ -29,11 +29,12 @@ ENV TERM=xterm
 
 #
 # Update the image to the latest packages
-RUN apt-get -y update \
-    && DEBIAN_FRONTEND=noninteractive && apt-get -y --allow-unauthenticated upgrade && apt-get autoremove && \
-    apt-get install -y --allow-unauthenticated \
+RUN apt -y update \
+    && DEBIAN_FRONTEND=noninteractive && apt -y --allow-unauthenticated upgrade && apt autoremove && \
+    apt install -y --allow-unauthenticated \
     apt-transport-https \
     mosquitto-clients build-essential cmake libudev-dev libusb-0.1-4 libcurl4 libftdi-dev libusb-dev libconfuse-dev libcurl4-gnutls-dev libpython3.8-dev tzdata apt-utils software-properties-common sudo net-tools iproute2 mc htop curl wget bash iputils-ping zip unzip python3-pip
+RUN apt autoremove
 RUN pip3 install samsungctl
 RUN pip3 install vsure
 RUN pip3 install websocket-client
