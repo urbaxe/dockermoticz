@@ -3,8 +3,8 @@ FROM ubuntu:latest
 # Disable Prompt During Packages Installation
 ARG DEBIAN_FRONTEND=noninteractive
 # set version label
-ARG BUILD_DATE=2020-10-21
-ARG VERSION=12496
+ARG BUILD_DATE=2020-11-09
+ARG VERSION=12592
 
 # Identify the maintainer of an image
 LABEL vcs-url="https://github.com/domoticz/domoticz" \
@@ -29,8 +29,11 @@ ENV TERM=xterm
 
 #
 # Update the image to the latest packages
-RUN apt-get update && apt-get upgrade -y
-RUN apt-get install -y libudev-dev libusb-0.1-4 libcurl4 libftdi-dev libusb-dev libconfuse-dev libcurl4-gnutls-dev libpython3.8-dev tzdata apt-utils software-properties-common sudo net-tools iproute2 mc htop curl wget bash iputils-ping zip unzip python3-pip usbutils
+RUN apt -y update \
+    && DEBIAN_FRONTEND=noninteractive && apt -y --allow-unauthenticated upgrade && apt autoremove && \
+    apt install -y --allow-unauthenticated \
+    apt-transport-https \
+    mosquitto-clients libudev-dev libusb-0.1-4 libcurl4 libftdi-dev libusb-dev libconfuse-dev libcurl4-gnutls-dev libpython3.8-dev tzdata apt-utils software-properties-common sudo net-tools iproute2 mc htop curl wget bash iputils-ping zip unzip python3-pip usbutils && apt -y autoremove
 RUN pip3 install samsungctl
 RUN pip3 install vsure
 RUN pip3 install websocket-client
