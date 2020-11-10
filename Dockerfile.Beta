@@ -3,8 +3,8 @@ FROM ubuntu:latest
 # Disable Prompt During Packages Installation
 ARG DEBIAN_FRONTEND=noninteractive
 # set version label
-ARG BUILD_DATE=2020-11-09
-ARG VERSION=12592
+ARG BUILD_DATE=2020-10-21
+ARG VERSION
 
 # Identify the maintainer of an image
 LABEL vcs-url="https://github.com/domoticz/domoticz" \
@@ -33,25 +33,18 @@ RUN apt -y update \
     && DEBIAN_FRONTEND=noninteractive && apt -y --allow-unauthenticated upgrade && apt autoremove && \
     apt install -y --allow-unauthenticated \
     apt-transport-https \
-    mosquitto-clients libudev-dev libusb-0.1-4 libcurl4 libftdi-dev libusb-dev libconfuse-dev libcurl4-gnutls-dev libpython3.8-dev tzdata apt-utils software-properties-common sudo net-tools iproute2 mc htop curl wget bash iputils-ping zip unzip python3-pip usbutils && apt -y autoremove
-RUN pip3 install samsungctl
-RUN pip3 install vsure
-RUN pip3 install websocket-client
+    git mosquitto-clients libudev-dev libusb-0.1-4 libcurl4 libftdi-dev libusb-dev libconfuse-dev libcurl4-gnutls-dev libpython3.8-dev tzdata apt-utils software-properties-common sudo net-tools iproute2 mc htop curl wget bash iputils-ping zip unzip python3-pip usbutils && apt -y autoremove
+RUN pip3 install samsungctl vsure websocket-client requests paramiko
 RUN mkdir -p /opt/domoticz
-
-# COPY domoticz/ /opt/domoticz/
-RUN wget -qO- https://releases.domoticz.com/releases/beta/domoticz_linux_x86_64.tgz | tar xz -C /opt/domoticz
-WORKDIR /opt/domoticz
-
-RUN chmod +x ./domoticz
-RUN sed -i '/update2.html/d' /opt/domoticz/www/html5.appcache
 
 VOLUME /opt/domoticz/db
 VOLUME /opt/domoticz/scripts
 VOLUME /opt/domoticz/backups
 VOLUME /opt/domoticz/plugins
+WORKDIR /opt/domoticz
 
 EXPOSE 80 443
+COPY run.sh /.
+RUN chmod +x /run.sh
 
-ENTRYPOINT ["/opt/domoticz/domoticz", "-dbase", "/opt/domoticz/db/domoticz.db", "-log", "/opt/domoticz/db/domoticz.log"]
-CMD ["-www", "80", "-sslwww", "443"]
+ENTRYPOINT ["/bin/sh", "-c", "/run.sh"]
