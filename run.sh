@@ -19,7 +19,7 @@ else
         echo "$info Not setting any timezone for the container"
 fi
 
-wget -qO- http://releases.domoticz.com/releases/release/domoticz_linux_x86_64.tgz | tar xz -C $HOME
+wget -qO- https://releases.domoticz.com/releases/beta/domoticz_linux_x86_64.tgz | tar xz -C $HOME
 chmod +x $HOME/domoticz
 sed -i '/update2.html/d' $HOME/www/html5.appcache
 cd $HOME/plugins && git clone https://github.com/d-EScape/Domoticz_iDetect.git iDetect
