@@ -30,10 +30,16 @@ WORKDIR /opt/domoticz
 RUN apt -y update \
     && DEBIAN_FRONTEND=noninteractive && apt -y --allow-unauthenticated upgrade && apt autoremove && \
     apt install -y --allow-unauthenticated \
-    apt-transport-https git mosquitto-clients libudev-dev libusb-0.1-4 libcurl4 libftdi-dev libusb-dev libconfuse-dev libcurl4-gnutls-dev \
+    rsync apt-transport-https git mosquitto-clients libudev-dev libusb-0.1-4 libcurl4 libftdi-dev libusb-dev libconfuse-dev libcurl4-gnutls-dev \
     libpython3.8-dev tzdata apt-utils software-properties-common sudo net-tools iproute2 mc htop curl wget bash iputils-ping zip unzip python3-pip usbutils && apt -y autoremove
 RUN pip3 install samsungctl vsure websocket-client requests paramiko
-RUN mkdir -p /opt/domoticz
+
+RUN mkdir -p /opt/domoticz/plugins /tmp/domoticz/plugins
+RUN wget -qO- https://releases.domoticz.com/releases/beta/domoticz_linux_x86_64.tgz | tar xz -C $HOME && \
+    rsync -a $HOME /tmp && \
+    sed -i '/update2.html/d' $HOME/www/html5.appcache
+RUN cd /tmp/domoticz/plugins && git clone https://github.com/d-EScape/Domoticz_iDetect.git iDetect && \
+    cd $HOME
 
 VOLUME /opt/domoticz/db
 VOLUME /opt/domoticz/scripts
