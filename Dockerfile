@@ -20,38 +20,34 @@ ENV PUID=1000
 ENV PGID=1000
 ENV TZ=Europe/Stockholm
 ENV WEBROOT=domoticz
-ENV www=80
-ENV sslwww=443
+ENV www=8090
+ENV sslwww=1443
 ENV PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 ENV PS1=$(whoami)@$(hostname):$(pwd)\$
 ENV HOME=/opt/domoticz
-ENV TERM=xterm
-
-#
+WORKDIR /opt/domoticz
 # Update the image to the latest packages
 RUN apt -y update \
     && DEBIAN_FRONTEND=noninteractive && apt -y --allow-unauthenticated upgrade && apt autoremove && \
     apt install -y --allow-unauthenticated \
-    apt-transport-https \
-    mosquitto-clients libudev-dev libusb-0.1-4 libcurl4 libftdi-dev libusb-dev libconfuse-dev libcurl4-gnutls-dev libpython3.8-dev tzdata apt-utils software-properties-common sudo net-tools iproute2 mc htop curl wget bash iputils-ping zip unzip python3-pip usbutils && apt -y autoremove
-RUN pip3 install samsungctl
-RUN pip3 install vsure
-RUN pip3 install websocket-client
-RUN mkdir -p /opt/domoticz
+    rsync apt-transport-https git mosquitto-clients libudev-dev libusb-0.1-4 libcurl4 libftdi-dev libusb-dev libconfuse-dev libcurl4-gnutls-dev \
+    libpython3.8-dev tzdata apt-utils software-properties-common sudo net-tools iproute2 mc htop curl wget bash iputils-ping zip unzip python3-pip usbutils && apt -y autoremove
+RUN pip3 install samsungctl vsure websocket-client requests paramiko
 
-# COPY domoticz/ /opt/domoticz/
-RUN wget -qO- http://releases.domoticz.com/releases/release/domoticz_linux_x86_64.tgz | tar xz -C /opt/domoticz
-WORKDIR /opt/domoticz
-
-RUN chmod +x ./domoticz
-RUN sed -i '/update2.html/d' /opt/domoticz/www/html5.appcache
+RUN mkdir -p /opt/domoticz/plugins /tmp/domoticz/plugins
+RUN wget -qO- http://releases.domoticz.com/releases/release/domoticz_linux_x86_64.tgz | tar xz -C $HOME && \
+    rsync -a $HOME /tmp && \
+    sed -i '/update2.html/d' $HOME/www/html5.appcache
+RUN cd /tmp/domoticz/plugins && git clone https://github.com/d-EScape/Domoticz_iDetect.git iDetect && \
+    cd $HOME
 
 VOLUME /opt/domoticz/db
 VOLUME /opt/domoticz/scripts
 VOLUME /opt/domoticz/backups
 VOLUME /opt/domoticz/plugins
 
-EXPOSE 80 443
+EXPOSE $www $sslwww
+COPY commons.sh run.sh /
+RUN  chmod +x /run.sh /commons.sh
 
-ENTRYPOINT ["/opt/domoticz/domoticz", "-dbase", "/opt/domoticz/db/domoticz.db", "-log", "/opt/domoticz/db/domoticz.log"]
-CMD ["-www", "80", "-sslwww", "443"]
+ENTRYPOINT ["/bin/sh", "-c", "/run.sh"]
