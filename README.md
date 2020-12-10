@@ -4,8 +4,8 @@ Domoticz is a Home Automation System that lets you monitor and configure various
 # Supported Architectures
 The images support architecture x86-64.
 
-Simply pulling fixdata/dockermoticz:stable and you get an ubuntu 20.04 dist with Domoticz latest stable release.
-or fixdata/dockermoticz:latest for the nightly build beta
+Simply pulling fixdata/dockermoticz:latest and you get an ubuntu 20.04 dist with Domoticz latest stable release.
+or fixdata/dockermoticz:beta for the nightly build beta
 
 The architectures supported by this image are:
 
@@ -20,8 +20,8 @@ The architectures supported by this image are:
 
 | Tag           | Description |
 | ------------- | ----------- |
-| beta    | Current latest head from development at https://releases.domoticz.com/releases/beta/domoticz_linux_x86_64.tgz.|
-| latest  | Latest stable version at http://releases.domoticz.com/releases/release/domoticz_linux_x86_64.tgz.|
+| beta    | Current latest head from development at https://releases.domoticz.com/releases/beta/domoticz_linux_x86_64.tgz. |
+| latest  | Latest stable version at http://releases.domoticz.com/releases/release/domoticz_linux_x86_64.tgz.              |
 
 # Usage
 Here are some example to help you get started creating a container.
@@ -43,7 +43,7 @@ docker create \
   -v path to plugins:/opt/domoticz/plugins \
   --device path to device:path to device \
   --restart unless-stopped \
-  fixdata/domoticz
+  fixdata/dockermoticz
 ```
 ## Passing Through USB Devices
 To get full use of Domoticz, you probably have a USB device you want to pass through. To figure out which device to pass through, you have to connect the device and look in dmesg for the device node created. Issue the command 'dmesg | tail' after you connected your device and you should see something like below.
@@ -62,7 +62,7 @@ Compatible with docker-compose v2 schemas.
 version: "2"
 services:
   domoticz:
-    image: linuxserver/domoticz
+    image: fixdata/dockermoticz
     container_name: domoticz
     environment:
       - PUID=1000
@@ -70,9 +70,9 @@ services:
       - TZ=Europe/Stockholm
       - WEBROOT=domoticz #optional
     volumes:
-      - path to db:/opt/domoticz/db \
-      - path to scripts:/opt/domoticz/scripts \
-      - path to backups:/opt/domoticz/backups \
+      - path to db:/opt/domoticz/db
+      - path to scripts:/opt/domoticz/scripts
+      - path to backups:/opt/domoticz/backups
       - path to plugins:/opt/domoticz/plugins  
     ports:
       - 8008:80
@@ -100,15 +100,6 @@ Container images are configured using parameters passed at runtime (such as thos
 |/opt/domoticz/plugins|Where Domoticz stores plugin files.|
 |--device <path to device>|For passing through USB devices. One or more|
 
-# Environment variables from files (Docker secrets)
-You can set any environment variable from a file by using a special prepend FILE__.
-
-As an example:
-```
--e FILE__PASSWORD=/run/secrets/mysecretpassword
-```
-Will set the environment variable PASSWORD based on the contents of the /run/secrets/mysecretpassword file.
-
 # User / Group Identifiers
 When using volumes (-v flags) permissions issues can arise between the host OS and the container, we avoid this issue by allowing you to specify the user PUID and group PGID.
 
@@ -125,7 +116,7 @@ To configure Domoticz, go to the IP of your docker host on the port you configur
 
 # Updating Info
 ## Via Docker Run/Create
-Update the image: docker pull linuxserver/domoticz
+Update the image: docker pull fixdata/dockermoticz
 Stop the running container: docker stop domoticz
 Delete the container: docker rm domoticz
 Recreate a new container with the same docker create parameters as instructed above (if mapped correctly to a host folder, your /config folder and settings will be preserved)
