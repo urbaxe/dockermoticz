@@ -100,15 +100,6 @@ Container images are configured using parameters passed at runtime (such as thos
 |/opt/domoticz/plugins|Where Domoticz stores plugin files.|
 |--device <path to device>|For passing through USB devices. One or more|
 
-# Environment variables from files (Docker secrets)
-You can set any environment variable from a file by using a special prepend FILE__.
-
-As an example:
-```
--e FILE__PASSWORD=/run/secrets/mysecretpassword
-```
-Will set the environment variable PASSWORD based on the contents of the /run/secrets/mysecretpassword file.
-
 # User / Group Identifiers
 When using volumes (-v flags) permissions issues can arise between the host OS and the container, we avoid this issue by allowing you to specify the user PUID and group PGID.
 
