@@ -3,7 +3,7 @@ FROM ubuntu:latest
 # Disable Prompt During Packages Installation
 ARG DEBIAN_FRONTEND=noninteractive
 # set version label
-ARG BUILD_DATE=2021-06-08
+ARG BUILD_DATE=2021-06-23
 ARG VERSION
 
 # Identify the maintainer of an image
