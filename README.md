@@ -1,4 +1,4 @@
-# Fixdata
+# Fixdata - DOckerMOTICZ
 Domoticz is a Home Automation System that lets you monitor and configure various devices like: Lights, Switches, various sensors/meters like Temperature, Rain, Wind, UV, Electra, Gas, Water and much more. Notifications/Alerts can be sent to any mobile device.
 
 # Supported Architectures
@@ -23,6 +23,16 @@ The architectures supported by this image are:
 | beta    | Current latest head from development at https://releases.domoticz.com/releases/beta/domoticz_linux_x86_64.tgz. |
 | latest  | Latest stable version at http://releases.domoticz.com/releases/release/domoticz_linux_x86_64.tgz.              |
 
+| Bundled plugins          | Tag | Info |
+| ------------- | ----------- | ----------- |
+| Tuya Thermostat Plugin. | beta | https://github.com/iasmanis/Domoticz-Tuya-Thermostat-Plugin |
+| Zigbee2Mqtt Plugin. | beta | https://github.com/stas-demydiuk/domoticz-zigbee2mqtt-plugin |
+| ShellyCloudPlugin. | beta | https://github.com/mario-peters/ShellyCloudPlugin|
+| ShellyMQTT. | beta | https://github.com/enesbcs/Shelly_MQTT |
+| Presence detection from wireless router. | latest/beta | |
+| Verisure | latest/beta | |
+| SamsungTV | latest/beta | |
+
 # Usage
 Here are some example to help you get started creating a container.
 
@@ -37,6 +47,7 @@ docker create \
   -p 8008:80 \
   -p 6144:6144 \
   -p 1443:443 \
+  -v /etc/localtime:/etc/localtime \
   -v path to db:/opt/domoticz/db \
   -v path to scripts:/opt/domoticz/scripts \
   -v path to backups:/opt/domoticz/backups \
@@ -70,6 +81,7 @@ services:
       - TZ=Europe/Stockholm
       - WEBROOT=domoticz #optional
     volumes:
+      - /etc/localtime:/etc/localtime:ro
       - path to db:/opt/domoticz/db
       - path to scripts:/opt/domoticz/scripts
       - path to backups:/opt/domoticz/backups
@@ -87,17 +99,18 @@ Container images are configured using parameters passed at runtime (such as thos
 
 |Parameter|Function|
 |---|---|
-|-p 8008|WebUI|
+|-p 8008|Web-GUI|
 |-p 6144|Domoticz communication port.|
 |-p 1443|Domoticz communication port.|
 |-e PUID=1000|for UserID - see below for explanation|
 |-e PGID=1000|for GroupID - see below for explanation|
 |-e TZ=Europe/Stckholm|Specify a timezone to use EG Europe/London.|
 |-e WEBROOT=domoticz|Sets webroot to domoticz for usage with subfolder reverse proxy. Not needed unless reverse proxying.|
+|-v /etc/localtime|Local time.|
 |-v /opt/domoticz/db|Where Domoticz stores config files and data.|
-|/opt/domoticz/scripts|Where Domoticz stores config script files.|
-|/opt/domoticz/backups|Where Domoticz stores backup files.|
-|/opt/domoticz/plugins|Where Domoticz stores plugin files.|
+|-v /opt/domoticz/scripts|Where Domoticz stores config script files.|
+|-v /opt/domoticz/backups|Where Domoticz stores backup files.|
+|-v /opt/domoticz/plugins|Where Domoticz stores plugin files.|
 |--device <path to device>|For passing through USB devices. One or more|
 
 # User / Group Identifiers
@@ -135,5 +148,6 @@ You can also remove the old dangling images: docker image prune
 # Versions
 |Versions|Comment|
 |--------|-------|
+|02.03.22|New plugins.|
 |06.09.20| Update README.|
 |06.08.20| Initial Release.|
