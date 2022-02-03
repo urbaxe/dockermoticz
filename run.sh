@@ -21,6 +21,10 @@ fi
 
 rsync -a --remove-source-files /tmp/domoticz/plugins $HOME
 rsync -a --remove-source-files /tmp/domoticz/scripts $HOME
+rsync -a --remove-source-files /tmp/domoticz/www/secpanel $HOME/www
+
+curl --create-dirs https://raw.githubusercontent.com/mario-peters/ShellyCloudPlugin/master/plugin.py --output /opt/domoticz/plugins/ShellyCloudPlugin/plugin.py
+
 cd $HOME
 chmod +x $HOME/domoticz
 $HOME/domoticz -dbase $HOME/db/domoticz.db -log $HOME/db/domoticz.log -www $www -sslwww $sslwww
