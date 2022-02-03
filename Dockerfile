@@ -35,7 +35,7 @@ RUN apt -y update \
 RUN pip3 install samsungctl vsure websocket-client requests paramiko pycrypto
 
 RUN mkdir -p /opt/domoticz/plugins /tmp/domoticz/plugins
-RUN wget -qO- https://releases.domoticz.com/releases/release/domoticz_linux_x86_64.tgz | tar xz -C $HOME && \
+RUN wget -qO- https://releases.domoticz.com/releases/beta/domoticz_linux_x86_64.tgz | tar xz -C $HOME && \
     rsync -a $HOME /tmp && \
     sed -i '/update2.html/d' $HOME/www/html5.appcache
 RUN cd /tmp/domoticz/plugins && git clone https://github.com/d-EScape/Domoticz_iDetect.git iDetect && \
